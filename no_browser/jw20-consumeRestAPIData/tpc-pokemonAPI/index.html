@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carta Pokémon</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ddb226;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            gap: 10%;
+        }
+
+        input {
+            width: 200px;
+            height: 20px;
+        }
+
+        .pokemonCard {
+            width: 300px;
+            height: 450px;
+            background-color: rgb(236, 234, 234);
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            border: 2px solid black;
+        }
+
+        .pokemonCard img {
+            width: 100%;
+            height: 200px;
+            object-fit:contain;
+            border-bottom: 2px solid #d4af37;
+        }
+
+        .pokemonCard.info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .pokemonCard .info h1 {
+            font-size: 24px;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .pokemonCard .info p {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .pokemonCard .info .stats {
+            display: flex;
+            justify-content:space-around;
+            margin-top: 10px;
+        }
+
+        .pokemonCard .info .stats div {
+            text-align: center;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .pokemonCard .info .pokemonType {
+            background-color: rgb(253, 137, 137);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 10px;
+            text-align: center;
+            align-content: center;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="searchPokemon">
+        <input id="pokemonName" type="text" placeholder="Pokemon Name or ID (lowercase)">
+        <button id="searchBtn">🔎</button>
+    </div>
+
+    <div id="cardContainer">
+
+    </div>
+        
+
+
+    <script>
+        
+        const gameIndex = document.querySelector("#gameIndex");
+        const cardContainer = document.querySelector("#cardContainer");
+        const searchPokemon = document.querySelector("#searchPokemon");
+        const searchBtn = document.querySelector("#searchBtn");
+        
+
+
+        searchBtn.addEventListener("click", function () {
+
+            const pokemonName = document.querySelector("#pokemonName").value.toLowerCase();
+
+            fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
+            
+                .then(function (response) {
+                    if (!response.ok) {
+                        throw new Error("Pokémon não encontrado");
+                    }
+                    return response.json();
+                })
+
+                .then(function (pokemon) {
+
+                    cardContainer.innerHTML = "";
+
+                    cardContainer.innerHTML = 
+                    
+                    `<div class="pokemonCard">
+                        <img src="${pokemon.sprites.other["official-artwork"].front_default}" alt="Pokemon Image">
+                        <div class="info">
+                            <h1 id="pokemonName">${pokemon.name}</h1>
+                            <p id="gameIndex">ID:${pokemon.id}</p>
+                            <div class="pokemonType">${pokemon.types[0].type.name}</div>
+                            <div class="stats">
+                                <div>
+                                    <p>HP</p>
+                                    <p id="hpValue">${pokemon.stats[0].base_stat}</p>
+                                </div>
+                                <div>
+                                    <p>Ataque</p>
+                                    <p id="ataqueValue">${pokemon.stats[1].base_stat}</p>
+                                </div>
+                                <div>
+                                    <p>Defesa</p>
+                                    <p id="defesaValue">${pokemon.stats[2].base_stat}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`;
+                })
+                .catch(function (error) {
+                    cardContainer.innerHTML = `<p>Pokémon não encontrado. Tente novamente.</p>`
+                });
+        });
+            
+    
+        
+    </script>
+</body>
+</html>

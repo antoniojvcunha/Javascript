@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #textBox {
+            min-width: 50px;
+            background-color: bisque;
+        }
+
+        #button1 {
+            background-color: pink;
+            color: red;
+            padding: 10px;
+            border: solid 5px yellow;
+            border-radius: 20px;
+            box-shadow: 10px 10px 10px purple;
+        }
+
+        #button1:active {
+            transform: translate(10px, 10px);
+            box-shadow: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="textBox"></div>
+    <button id="button1">BUTOON !</button>
+
+
+
+    <script>
+        function doIt() {
+            textBox.innerText = Math.random();
+        }
+
+
+        const textBox = document.getElementById("textBox");
+        const button1 = document.getElementById("button1");
+
+        button1.addEventListener("click", doIt);
+       
+    </script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #textBox {
+            min-width: 50px;
+            min-height: 50px;
+            background-color: bisque;
+        }
+    </style>
+</head>
+<body>
+    <div id="textBox">0</div>
+    <button id="buttonMinus10">- 10</button>
+    <button id="buttonMinus1">- 1</button>
+    <button id="buttonPlus1">+ 1</button>
+    <button id="buttonPlus10">+ 10</button>
+
+
+
+    <script>
+        function buttonClickedPlus1() {
+            textBox.textContent += 1;
+            counter += 1;
+            textBox.textContent = counter;
+            
+            
+            if (counter < 0) {
+                textBox.style.color = "red";
+            }
+            if (counter > 10) {
+                textBox.style.color = "blue";
+            }
+            if (counter > 100) {
+                textBox.style.color = "green";
+            }
+            if (counter >= 0 && counter <= 10) {
+                textBox.style.color = "pink";
+            }
+        }
+
+        let counter = 0;
+
+        
+        
+
+        function buttonClickedMinus1() {
+            textBox.textContent += 1;
+            counter -= 1;
+            textBox.textContent = counter;
+
+            if (counter < 0) {
+                textBox.style.color = "red";
+            }
+            if (counter > 10) {
+                textBox.style.color = "blue";
+            }
+            if (counter > 100) {
+                textBox.style.color = "green";
+            }
+            if (counter >= 0 && counter <= 10) {
+                textBox.style.color = "pink";
+            }
+        }
+            
+
+        
+        
+
+        function buttonClickedMinus10() {
+            textBox.textContent += 1;
+            counter -= 10;
+            textBox.textContent = counter;
+
+            if (counter < 0) {
+                textBox.style.color = "red";
+            }
+            if (counter > 10) {
+                textBox.style.color = "blue";
+            }
+            if (counter > 100) {
+                textBox.style.color = "green";
+            }
+            if (counter >= 0 && counter <= 10) {
+                textBox.style.color = "pink";
+            }
+        }
+            
+
+        
+        
+
+        function buttonClickedPlus10() {
+            textBox.textContent += 1;
+            counter += 10;
+            textBox.textContent = counter;
+
+            if (counter < 0) {
+                textBox.style.color = "red";
+            }
+            if (counter > 10) {
+                textBox.style.color = "blue";
+            }
+            if (counter > 100) {
+                textBox.style.color = "green";
+            }
+            if (counter >= 0 && counter <= 10) {
+                textBox.style.color = "pink";
+            }
+        }
+            
+        const textBox = document.getElementById("textBox");
+        const buttonPlus1 = document.getElementById("buttonPlus1");
+        const buttonPlus10 = document.getElementById("buttonPlus10");
+        const buttonMinus1 = document.getElementById("buttonMinus1");
+        const buttonMinus10 = document.getElementById("buttonMinus10");
+        
+
+
+
+        buttonPlus1.addEventListener("click", buttonClickedPlus1);
+        buttonPlus10.addEventListener("click", buttonClickedPlus10);
+        buttonMinus1.addEventListener("click", buttonClickedMinus1);
+        buttonMinus10.addEventListener("click", buttonClickedMinus10);
+        
+        
+
+
+
+        
+
+        
+        
+        
+       
+
+        // 1 - Copiem o codigo e coloquem o counter a funcionar
+        // 2 - Se o numero for >10 o texto do numero deve mudar para vermelho
+    </script>
+</body>
+</html>

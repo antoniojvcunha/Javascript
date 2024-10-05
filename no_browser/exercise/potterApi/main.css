@@ -1,0 +1,63 @@
+body {
+    background-color: rgb(129, 127, 127);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Euphoria Script", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 21px;
+    font-style: bold;
+}
+
+#letterContainer {
+    background-image: url(img/potter\ letter.jpeg);
+    background-repeat: no-repeat;
+    width: 800px;
+    height: 1100px;
+    position: relative;
+}
+
+#allInfo {
+    margin-top: 270px;
+    display: flex;
+    flex-direction: column; /* Para alinhar as seções de cima para baixo */
+}
+
+#imageAndDropdown {
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px; /* Adiciona um espaço entre os elementos */
+    
+}
+
+#imagePersonContainer img {
+    width: 220px;
+    height: 327px;
+    position: absolute;
+    left: 10%;
+    border-radius: 5%;
+    top: 250px;
+}
+
+#dropdownBox {
+   position: absolute;
+   left: 45%;
+   top: 35%;
+}
+
+#infoContainer {
+    margin-top: 310px; /* Adiciona um espaçamento entre as seções */
+    display: flex;
+    position: absolute;
+    left: 100px;
+    gap: 100px;
+}
+
+#infoContainer p {
+    font-size: 35px;
+}
+
+#infoContainer p span {
+    font-size: 25px;
+}

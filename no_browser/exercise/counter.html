@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #textBox {
+            min-width: 50px;
+            min-height: 50px;
+            background-color: bisque;
+        }
+    </style>
+</head>
+<body>
+    <div id="textBox">0</div>
+    <button id="button1">BUTOON !</button>
+
+
+
+    <script>
+        function buttonClicked() {
+            const textBox = document.getElementById("textBox");
+            textBox.textContent += 1;
+            counter += 1;
+            textBox.textContent = counter;
+            
+            if (counter > 10) {
+                textBox.style.color = "red";
+            }
+
+        }
+
+        
+
+        let counter = 0;
+        
+        const button1 = document.getElementById("button1");
+        button1.addEventListener("click", buttonClicked);
+       
+
+        // 1 - Copiem o codigo e coloquem o counter a funcionar
+        // 2 - Se o numero for >10 o texto do numero deve mudar para vermelho
+    </script>
+</body>
+</html>

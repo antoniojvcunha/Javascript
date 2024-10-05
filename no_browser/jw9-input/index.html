@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" placeholder="Name" id="sampleInput">
+    <button id="sampleButton" >OK</button>
+
+    <p id="greetingBox" ></p>
+
+    <script>
+        const sampleInput = document.getElementById("sampleInput");
+        const sampleButton = document.getElementById("sampleButton");
+        const greetingBox = document.getElementById("greetingBox");
+
+        sampleButton.addEventListener("click", function() {
+            if (sampleInput.value.length > 0) {
+                greetingBox.textContent = "Hello " + sampleInput.value;
+                greetingBox.style.color = "black";
+            } else {
+                alert("Name is require ");
+                greetingBox.style.color = "red";
+            }
+
+            
+        });
+
+
+    </script>
+
+
+</body>
+</html>

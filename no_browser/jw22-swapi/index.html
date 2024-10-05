@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-image: url("img/starwars2.jpg");
+            background-size:cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: white;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 3rem;
+            text-shadow: 2px 2px 4px black;
+            text-shadow: 0 0 5px #ee2a2a, 0 0 10px #ee2a2a, 0 0 15px #ee2a2a;
+        }
+
+        #cardContainer {
+            text-align: center;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7); /* Fundo semitransparente */
+            border-radius: 10px;
+        }
+
+        div {
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            text-shadow: 1px 1px 3px black;
+            text-shadow: 0 0 5px #7da2f1, 0 0 10px #7da2f1, 0 0 15px #7da2f1;
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Star Wars </h1>
+    <div id="cardContainer">
+        <!-- <div>
+            <h2>Star Wars: Episode IV - A New Hope (1977)</h2>
+            <p>It is a period of civil war.\r\nRebel spaceships, striking\r\nfrom a hidden base, have won\r\ntheir first
+                victory against\r\nthe evil Galactic Empire.\r\n\r\nDuring the battle, Rebel\r\nspies managed to steal
+                secret\r\nplans to the Empire's\r\nultimate weapon, the DEATH\r\nSTAR, an armored space\r\nstation with
+                enough power\r\nto destroy an entire planet.\r\n\r\nPursued by the Empire's\r\nsinister agents,
+                Princess\r\nLeia races home aboard her\r\nstarship, custodian of the\r\nstolen plans that can save
+                her\r\npeople and restore\r\nfreedom to the galaxy....</p>
+        </div>
+        <div>
+            <h2>Star Wars: Episode V - The Empire Strikes Back (1980)</h2>
+            <p>It is a dark time for the\r\nRebellion. Although the Death\r\nStar has been destroyed,\r\nImperial troops
+                have driven the\r\nRebel forces from their hidden\r\nbase and pursued them across\r\nthe
+                galaxy.\r\n\r\nEvading the dreaded Imperial\r\nStarfleet, a group of freedom\r\nfighters led by Luke
+                Skywalker\r\nhas established a new secret\r\nbase on the remote ice world\r\nof Hoth.\r\n\r\nThe evil
+                lord Darth Vader,\r\nobsessed with finding young\r\nSkywalker, has dispatched\r\nthousands of remote
+                probes into\r\nthe far reaches of space....</p>
+        </div> -->
+    </div>
+
+    <script>
+        // usando o site https://swapi.dev
+        // Mostrar na pagina
+        // o titulo, numero do episodio, e opening crawl de todos os filmes de
+        // star wars disponiveis
+
+        // Bonus: colocar o numero do episodio em numeracao romana
+        // Bonus 2: separar visualmente os paragrafos do crawl (usando a tag <br>)
+
+        function convertToRoman(num) {
+            const romanNumerals = [
+                ["M", 1000], ["CM", 900], ["D", 500], ["CD", 400],
+                ["C", 100], ["XC", 90], ["L", 50], ["XL", 40],
+                ["X", 10], ["IX", 9], ["V", 5], ["IV", 4], ["I", 1]
+            ];
+            let roman = "";
+            for (let [letter, value] of romanNumerals) {
+                while (num >= value) {
+                    roman += letter;
+                    num -= value;
+                }
+            }
+            return roman;
+        }
+
+        function createFilmCards(films) {
+            for (let i = 0; i < films.length; i++) {
+                const title = films[i].title;
+                const openingCrawl = films[i].opening_crawl.replace(/\r\n/g, "<br>");;
+                const episodeNumber = films[i].episode_id;
+                const romanEpisode = convertToRoman(episodeNumber);
+
+                console.log(title);
+                console.log(openingCrawl);
+                console.log(episodeNumber);
+
+                cardContainer.innerHTML += `
+                    <div>
+                        <h2>Star Wars: Episode ${romanEpisode} - ${title}</h2>
+                        <p>${openingCrawl}</p>
+                    </div> 
+                `;
+            }
+        }
+
+        const cardContainer = document.querySelector("#cardContainer");
+
+        console.log("loading...");
+        const url = "https://swapi.dev/api/films";
+        fetch(url)
+            .then(function (response) {
+                return response.json();
+            }).then(function (result) {
+                // console.log(result);
+                createFilmCards(result.results);
+            }).catch(function (error) {
+                alert("Error!")
+            });
+
+    </script>
+</body>
+
+</html>
