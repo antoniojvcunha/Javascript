@@ -1,0 +1,37 @@
+body {
+    background-color: bisque;
+}
+
+#infoProductsContainer {
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: auto;
+    height: auto;
+    padding: 20px;
+    background-color:beige;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+}
+
+.product-card {
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    transition: transform 0.2s;
+    
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+}
+
+.product-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
